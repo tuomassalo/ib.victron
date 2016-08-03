@@ -12,7 +12,7 @@ def main():
     port = Serial(options.port, options.baudrate, timeout=options.timeout)
     mk2 = MK2(port).start()
 
-    g = graphitesend.init(prefix='sensors.inverter') # connects to localhost:2003
+    g = graphitesend.init(prefix='sensors.inverter', graphite_server='127.0.0.1')
 
     try:
         while True:
@@ -33,3 +33,5 @@ def main():
     except KeyboardInterrupt:
         pass
     port.close()
+
+main()
