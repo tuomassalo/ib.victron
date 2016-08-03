@@ -12,7 +12,7 @@ def main():
     port = Serial(options.port, options.baudrate, timeout=options.timeout)
     mk2 = MK2(port).start()
 
-    g = graphitesend.init(graphite_server='127.0.0.1', group='mppt', prefix='')
+    g = graphitesend.init(graphite_server='127.0.0.1', group='inverter', prefix='')
 
     try:
         while True:
