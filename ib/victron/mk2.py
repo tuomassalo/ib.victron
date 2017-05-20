@@ -290,9 +290,12 @@ class MK2(object):
         })
 
     def get_state(self):
+        return states[self.get_state_raw()]
+
+    def get_state_raw(self):
         data = self.communicate('W', '\x0E\x00\x00')
         state, substate = unpack('<B B', data[3:5])
-        return states[(state, substate)]
+        return (state, substate)
 
     def set_state(self, s):
         """ 1: forced equalise
